@@ -12,11 +12,10 @@ app.use(morgan('tiny'))
 app.use(cors())
 app.use(reqIp.mw())
 
-app.use((req, res)=> {
+app.get('/', (req, res)=>{
     const ip = req.clientIp;
-    res.end(ip);
-});
-
+    res.send(ip)
+})
 
 app.listen(port, (err) =>{
     if(err) console.log(err)
